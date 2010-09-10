@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site  site="http://www.itv.com/itvplayer"
+       plugin="http://www.itv.com/mercury/.*VideoPlayer*" 
+       initialState="playing" 
+       version="1.0"> 
+       
+       <seekbar type="simple"> 
+         <start x="10" y="430" /> 
+         <end x="695" y="430" /> 
+         <played> 858dab
+           <color rgb="858dab" /> 
+           </played> 
+       </seekbar>
+       
+
+       
+       
+       <!-- NAMED CONDITIONAL DEFINITION -->
+       
+        <condition name="pausedstate">
+            <color x="210" y="200" rgb="d0cfcd"/>
+        </condition>
+      
+      
+      <!-- Playing -->
+	<state name="playing">
+		<event>
+			<condition>
+                           <and>
+                              <command name="pause" />
+                              <not>
+                                <condition name="pausedstate"/>
+                              </not>
+                           </and>
+				
+			</condition>
+			<action>
+                                <click x="1" y="1" />
+                                <pause time="300"/>
+				<click x="30" y="460" />
+				<goto state="paused" />
+			</action>
+		</event>
+
+	</state>
+
+	<!-- Paused -->
+	<state name="paused">
+		<event>
+			<condition>
+				<command name="play" />
+			</condition>
+			<action>
+                                <click x="1" y="1" />
+                                <pause time="300"/>
+				<click x="200" y="220" />
+				<goto state="playing" />
+			</action>
+		</event>
+	</state>
+        
+     
+</site>
